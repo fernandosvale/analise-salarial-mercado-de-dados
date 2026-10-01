@@ -1,89 +1,164 @@
-# Dashboard: Análise Salarial no Mercado de Dados
+# 📊 Dashboard de Análise Salarial no Mercado de Dados
 
-Este projeto é um dashboard interativo que explora a evolução e as tendências salariais de profissionais na área de dados. Ele foi desenvolvido como desafio final da **Imersão de Dados Python** da **Alura**, com o objetivo de colocar em prática as habilidades de análise de dados, visualização e desenvolvimento de aplicativos web.
+> Dashboard interativo construído com **Python + Streamlit** para explorar tendências salariais globais na área de dados — por cargo, senioridade, tipo de contrato e localização geográfica.
 
-<table>
-  <tr>
-    <td colspan="3">
-      <img src="https://github.com/user-attachments/assets/801a9ed4-e99e-4ca7-b481-1aa9fc3801ab" alt="Screenshot do dashboard em outra seção" width="100%" />
-    </td>
-  </tr>
-    <tr>
-    <td>
-      <img src="https://github.com/user-attachments/assets/b73b29d0-244c-4603-85e4-cc250537c1d1" alt="Screenshot 1 do dashboard" width="400" />
-    </td>
-    <td>
-      <img src="https://github.com/user-attachments/assets/a452af78-d743-4ff9-89f4-9808e6b44e99" alt="Screenshot 2 do dashboard" width="400" />
-    </td>
-    <td>
-      <img src="https://github.com/user-attachments/assets/51ea6d69-665d-495f-be33-e8e444270d27" alt="Screenshot 3 do dashboard" width="400" />
-    </td>
-  </tr>
-</table>
+---
 
-## 🌟 Sobre o Projeto
+## 🎯 Objetivo
 
-O dashboard responde a perguntas de negócio cruciais para quem atua ou deseja entrar no mercado de dados, como:
-- Qual é a faixa salarial média para diferentes cargos (Data Scientist, Engenheiro de Dados, Analista, etc.)?
-- Como a remuneração varia de acordo com a senioridade e o tamanho da empresa?
-- Qual é a diferença de salário para diferentes tipos de contrato (remoto, híbrido ou presencial)?
-- Quais países oferecem os salários mais altos para profissionais de dados?
+O mercado de dados cresceu exponencialmente nos últimos anos, mas **entender a real dinâmica salarial** desse setor não é trivial. Este projeto responde perguntas como:
 
-O resultado é uma ferramenta visual e intuitiva que transforma dados complexos em insights acionáveis, demonstrando a capacidade de extrair valor de um conjunto de dados e comunicá-lo de forma eficaz.
+- Quais cargos pagam mais no mercado de dados?
+- Como a senioridade e o tipo de contrato impactam a remuneração?
+- Quais países oferecem os maiores salários para Cientistas de Dados?
+- A tendência de trabalho remoto está correlacionada a salários mais altos?
 
-## ✨ Funcionalidades do Dashboard
+---
 
-O dashboard permite que o usuário explore os dados através de filtros e visualizações interativas:
+## 🖼️ Preview
 
-- **Filtros Dinâmicos:** Filtre os dados por ano, senioridade, tipo de contrato e tamanho da empresa.
-- **KPIs de Mercado:** Visualize as métricas gerais do mercado, como salário médio, maior e menor salário e o cargo mais frequente.
-- **Análise de Salários por Cargo:** Gráfico de barras com os salários médios dos 10 cargos mais bem pagos.
-- **Distribuição Salarial:** Histograma que mostra a frequência dos salários em diferentes faixas.
-- **Proporção de Trabalho:** Gráfico de pizza que exibe a proporção de trabalho remoto, híbrido e presencial.
-- **Análise Geográfica:** Mapa interativo que mostra o salário médio de Cientistas de Dados por país.
-- **Tabela Detalhada:** Acesso à tabela de dados completa, permitindo a visualização dos registros filtrados.
+> O dashboard é 100% interativo. Os filtros na barra lateral atualizam todos os gráficos e métricas em tempo real.
 
-## 🛠️ Tecnologias Utilizadas
+| Seção | Descrição |
+|---|---|
+| **KPIs** | Salário máximo, médio, mínimo, total de registros e cargo mais frequente |
+| **Top 10 Cargos** | Ranking de cargos por salário médio anual |
+| **Distribuição** | Histograma de frequência por faixa salarial |
+| **Tipo de Trabalho** | Proporção entre remoto, híbrido e presencial |
+| **Top Países** | Países com maior remuneração média |
+| **Mapa Geográfico** | Choropleth com salários de Cientistas de Dados por país |
 
-O projeto foi construído utilizando as seguintes tecnologias:
+---
 
-- **Linguagem:** Python
-- **Manipulação e Análise de Dados:** Pandas
-- **Visualização de Dados:** Plotly Express
-- **Desenvolvimento Web:** Streamlit
-- **Controle de Versão:** Git e GitHub
+## 🛠️ Tecnologias e Bibliotecas
 
-## 🚀 Como Rodar o Projeto Localmente
+| Tecnologia | Uso |
+|---|---|
+| **Python 3.11+** | Linguagem principal |
+| **Streamlit 1.44** | Framework de dashboard web |
+| **Pandas 2.2** | Manipulação e análise de dados |
+| **Plotly 5.24** | Visualizações interativas |
+| **python-dotenv 1.0** | Gerenciamento de variáveis de ambiente |
+| **pytest 8.3** | Testes unitários |
 
-1.  Clone este repositório para sua máquina local:
-    ```bash
-    git clone [https://github.com/fernandosvale/analise-salarial-mercado-de-dados.git](https://github.com/fernandosvale/analise-salarial-mercado-de-dados.git)
-    ```
+---
 
-2.  Navegue até o diretório do projeto:
-    ```bash
-    cd analise-salarial-mercado-de-dados
-    ```
+## 📁 Estrutura do Projeto
 
-3.  (Opcional, mas recomendado) Crie um ambiente virtual:
-    ```bash
-    python -m venv venv
-    ```
-    Ative o ambiente virtual:
-    - **Windows:** `.\venv\Scripts\activate`
-    - **macOS/Linux:** `source venv/bin/activate`
+```
+cenario_area_dados/
+│
+├── app.py                  # Ponto de entrada do dashboard Streamlit
+│
+├── src/
+│   ├── data_loader.py      # Carregamento, filtragem e KPIs
+│   └── charts.py           # Funções de visualização (Plotly)
+│
+├── data/
+│   ├── raw/                # Dataset original (não versionado)
+│   └── processed/          # Dados transformados (não versionado)
+│
+├── notebooks/              # Análises exploratórias (EDA)
+│
+├── tests/
+│   └── test_data_loader.py # Testes unitários (pytest)
+│
+├── .env.example            # Template de variáveis de ambiente
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
 
-4.  Instale as dependências necessárias a partir do arquivo `requirements.txt`:
-    ```bash
-    pip install -r requirements.txt
-    ```
+---
 
-5.  Execute o aplicativo Streamlit:
-    ```bash
-    streamlit run app.py
-    ```
+## ⚙️ Como Rodar Localmente
 
-## 🔗 Links
+### Pré-requisitos
 
-- **Dashboard Interativo:** [https://projfernando.streamlit.app/](https://projfernando.streamlit.app/)
-- **Meu LinkedIn:** [https://www.linkedin.com/in/fernandosilvavale/](https://www.linkedin.com/in/fernandosilvavale/)
+- Python 3.11 ou superior
+- pip
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/fernandosvale/analise-salarial-mercado-de-dados.git
+cd cenario_area_dados
+```
+
+### 2. Crie e ative o ambiente virtual
+
+```bash
+# Windows
+python -m venv .venv
+.venv\Scripts\activate
+
+# Linux / macOS
+python -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Instale as dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure as variáveis de ambiente
+
+```bash
+# Copie o template e edite se necessário
+copy .env.example .env   # Windows
+cp .env.example .env     # Linux/macOS
+```
+
+O valor padrão já aponta para `data/raw/dados-imersao-final.csv`. Basta colocar o dataset nesse caminho.
+
+### 5. Adicione o dataset
+
+Coloque o arquivo `dados-imersao-final.csv` em:
+
+```
+data/raw/dados-imersao-final.csv
+```
+
+> 📌 O dataset não está versionado no repositório por ser um arquivo grande (~11 MB). Ele pode ser obtido em: [AI Jobs Salaries — Kaggle](https://www.kaggle.com/datasets/hummaamqaasim/jobs-in-data)
+
+### 6. Execute o dashboard
+
+```bash
+streamlit run app.py
+```
+
+O dashboard abrirá automaticamente em `http://localhost:8501`.
+
+---
+
+## 🧪 Executando os Testes
+
+```bash
+pytest tests/ -v
+```
+
+---
+
+## 🚀 Próximos Passos
+
+- [ ] **Análise temporal** — gráfico de evolução salarial ano a ano com linha de tendência
+- [ ] **Filtro por cargo** — permitir selecionar cargos específicos além dos filtros existentes
+- [ ] **Comparativo de moedas** — converter salários para BRL usando taxa de câmbio em tempo real
+- [ ] **Notebook de EDA** — análise exploratória detalhada com estatísticas descritivas avançadas
+- [ ] **Deploy no Streamlit Cloud** — publicar o dashboard online gratuitamente
+
+---
+
+## 📄 Fonte dos Dados
+
+Dataset: **Jobs and Salaries in Data Science** — disponível no [Kaggle](https://www.kaggle.com/datasets/hummaamqaasim/jobs-in-data).
+
+Os dados contêm registros de salários anuais (em USD) de profissionais da área de dados ao redor do mundo, coletados entre 2020 e 2023.
+
+---
+
+## 📬 Contato
+
+Feito por **Fernando Silva Vale** — [LinkedIn](https://www.linkedin.com/in/fernandosilvavale) | [GitHub](https://github.com/fernandosvale)
